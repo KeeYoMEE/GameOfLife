@@ -1,0 +1,19 @@
+# Windows thumbnail db
+.DS_Store
+
+# Eclipse project files
+.classpath
+.settings
+.buildpath
+.project
+
+# PHPStorm
+.idea
+
+# Tmp files
+*~
+*.swp
+
+composer.lock
+vendor/*
+

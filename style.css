@@ -1,0 +1,75 @@
+html, body
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #505050;
+}
+
+div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+nav a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-family: sans-serif;
+
+}
+a {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+a:hover {
+    width: 300px;
+    height: 300px;
+    transform: rotate(180deg);
+    text-align: center;
+    text-decoration: none;
+}
+div form {
+    text-align: center;
+    width: 300px;
+    height: 82px;
+    background: deepskyblue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+.wrapper {
+    width: 100px;
+    height: 20px;
+    font-size: 5mm;
+    float: left;
+    position: relative;
+    margin: 20px;
+
+
+}
+.wrapper:hover {
+    transition: 2s;
+    font-size: 15mm;
+    transform: scaleY(-1), font-size 2s;
+}
+.seda{
+    background: radial-gradient(#1d2123, white);
+}
