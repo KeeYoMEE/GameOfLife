@@ -4,11 +4,11 @@ namespace Pepe\GameOfLife;
 
 class GameOfLife
 {
-    public function createArray($width, $height)
+    public function createArray($width, $height, $world)
     {
         for ($x = 0; $x <= $height; $x++) {
             for ($y = 0; $y <= $width; $y++) {
-                if ($_POST["A$x.$y"]) {
+                if ($world[$x][$y]) {
                     $array[$x][$y] = 1;
                 } else {
                     $array[$x][$y] = 0;
