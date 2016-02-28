@@ -6,8 +6,8 @@ class GameOfLife
 {
     public function createArray($width, $height, $world)
     {
-        for ($x = 0; $x < $height; $x++) {
-            for ($y = 0; $y < $width; $y++) {
+        for ($y = 0; $y < $height; $y++) {
+            for ($x = 0; $x < $width; $x++) {
                 if ($world[$x][$y]) {
                     $array[$x][$y] = 1;
                 } else {
@@ -24,8 +24,8 @@ class GameOfLife
         $white = imagecolorallocate($image, 255, 255, 255);
         $black = imagecolorallocate($image, 0, 0, 0);
 
-        for ($x = 0; $x < $height; $x++) {
-            for ($y = 0; $y < $width; $y++) {
+        for ($y = 0; $y < $height; $y++) {
+            for ($x = 0; $x < $width; $x++) {
 
                 $v = $x * 5;
                 $s = $y * 5;

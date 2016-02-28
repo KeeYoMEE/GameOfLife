@@ -3,6 +3,7 @@
 
     $_SESSION['width'] = $_POST['width'];
     $_SESSION['height'] = $_POST['height'];
+    $_SESSION['gene'] = $_POST['generations'];
 
     echo "<form action=\"gif.php\" method = \"post\">";
     echo "<table>";
