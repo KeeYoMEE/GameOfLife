@@ -16,4 +16,5 @@
 
 composer.lock
 vendor/*
+src/GIFEncoder.class.php
 
