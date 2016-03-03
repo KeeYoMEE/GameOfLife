@@ -4,51 +4,16 @@ namespace Pepe\GameOfLife;
 
 class GameOfLife
 {
-    public function createArray($width, $height, $world)
+    private $array;
+    public function __construct(array $array)
     {
-        for ($y = 0; $y < $height; $y++) {
-            for ($x = 0; $x < $width; $x++) {
-                if ($world[$x][$y]) {
-                    $array[$x][$y] = 1;
-                } else {
-                    $array[$x][$y] = 0;
-                }
-            }
-        }
-        return $array;
+        $this->array = $array;
     }
-
-    public function createSnap($array, $width, $height)
+    public function getData()
     {
-        $image = imagecreatetruecolor($width * 5, $height * 5);
-        $white = imagecolorallocate($image, 255, 255, 255);
-        $black = imagecolorallocate($image, 0, 0, 0);
-
-        for ($y = 0; $y < $height; $y++) {
-            for ($x = 0; $x < $width; $x++) {
-
-                $v = $x * 5;
-                $s = $y * 5;
-
-                if ($array[$x][$y] == 1) {
-                    for ($i = 0; $i <= 4; $i++) {
-                        for ($ii = 0; $ii <= 4; $ii++) {
-                            imagesetpixel($image, $v + $i, $s + $ii, $black);
-                        }
-                    }
-                } else {
-                    for ($i = 0; $i <= 4; $i++) {
-                        for ($ii = 0; $ii <= 4; $ii++) {
-                            imagesetpixel($image, $v + $i, $s + $ii, $white);
-                        }
-                    }
-                }
-            }
-        }
-        return $image;
+        return $this->array;
     }
-
-    public function checkNeighbours($array, $x, $y)
+    private function checkNeighbours($array, $x, $y)
     {
         $n = 0;
         for ($i = $x - 1; $i <= $x + 1; $i++) {
@@ -63,31 +28,23 @@ class GameOfLife
         return $n;
     }
 
-    public function checkAlive($array, $x, $y)
+    private function checkAlive($array, $x, $y)
     {
-        $n = $this -> checkNeighbours($array, $x, $y);
+        $n = $this->checkNeighbours($array, $x, $y);
         if ($array[$x][$y] == 1) {
-            if ($n == 3 || $n == 2) {
-                return true;
-            } else {
-                return false;
-            }
+            return 3 === $n || 2 === $n;
         } else {
-            if ($n == 3) {
-                return true;
-            } else {
-                return false;
-            }
+            return 3 === $n;
         }
     }
 
-    public function nextGene($array)
+    public function nextGen($array)
     {
         $narray = [];
 
         foreach ($array as $y => $row) {
             foreach ($row as $x => $cell) {
-                $c = $this -> checkAlive($array, $x, $y);
+                $c = $this->checkAlive($array, $x, $y);
                 if ($c == true) {
                     $narray[$x][$y] = 1;
                 } else {
@@ -95,7 +52,6 @@ class GameOfLife
                 }
             }
         }
-        return $narray;
+        return new static ($narray);
     }
-
 }

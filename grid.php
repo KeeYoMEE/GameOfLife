@@ -1,11 +1,11 @@
 <?php
-    session_start();
 
-    $_SESSION['width'] = $_POST['width'];
-    $_SESSION['height'] = $_POST['height'];
-    $_SESSION['gene'] = $_POST['generations'];
 
-    echo "<form action=\"gif.php\" method = \"post\">";
+if (isset($_POST['width']) && isset($_POST['height']) && isset($_POST['generations'])) {
+
+    echo "<form action=\"gif.php?width=" . $_POST['width'] .
+        "&height=" . $_POST['height'] .
+        "&gene=" . $_POST['generations'] . "\" method = \"post\">";
     echo "<table>";
     for ($y = 0; $y < $_POST['height']; $y++) {
         echo "<tr>";
@@ -16,4 +16,8 @@
     }
     echo "<input type=\"submit\" name = \"submit\">";
     echo "</form>";
+
+} else {
+    echo "Nejsou zadany hodnoty";
+}
 
