@@ -4,16 +4,35 @@ namespace Pepe\GameOfLife;
 
 class GameOfLifeGif
 {
+    /**
+     *
+     *
+     * @var GameOfLife
+     */
     private $gol;
 
-    public function __construct($gol)
+    /**
+     * GameOfLifeGif constructor.
+     *
+     * @param GameOfLife $gol
+     */
+    public function __construct(GameOfLife $gol)
     {
         $this->gol = $gol;
     }
+
+    /**
+     *
+     *
+     * @param int $gene
+     * return void
+     */
     public function create($gene)
     {
+        $frames = [];
+        $framed = [];
         $gol = $this->gol;
-        for ($i = 1; $i < $gene; $i++) {
+        for ($i = 0; $i < $gene; $i++) {
             $data = $gol->getData();
             ob_start();
             $snap = $this->createSnap($data);

@@ -5,14 +5,30 @@ namespace Pepe\GameOfLife;
 class GameOfLife
 {
     private $array;
+
+    /**
+     * GameOfLife constructor.
+     * @param array $array
+     */
     public function __construct(array $array)
     {
         $this->array = $array;
     }
+
+    /**
+     * @return array
+     */
     public function getData()
     {
         return $this->array;
     }
+
+    /**
+     * @param $array
+     * @param $x
+     * @param $y
+     * @return int
+     */
     private function checkNeighbours($array, $x, $y)
     {
         $n = 0;
@@ -28,6 +44,12 @@ class GameOfLife
         return $n;
     }
 
+    /**
+     * @param $array
+     * @param $x
+     * @param $y
+     * @return bool
+     */
     private function checkAlive($array, $x, $y)
     {
         $n = $this->checkNeighbours($array, $x, $y);
@@ -38,20 +60,19 @@ class GameOfLife
         }
     }
 
+    /**
+     * @param $array
+     * @return static
+     */
     public function nextGen($array)
     {
         $narray = [];
 
         foreach ($array as $y => $row) {
             foreach ($row as $x => $cell) {
-                $c = $this->checkAlive($array, $x, $y);
-                if ($c == true) {
-                    $narray[$x][$y] = 1;
-                } else {
-                    $narray[$x][$y] = 0;
-                }
+                $this->checkAlive($array, $x, $y) ? $narray[$x][$y] = 1 : $narray[$x][$y] = 0;
             }
         }
-        return new static ($narray);
+        return new static($narray);
     }
 }
